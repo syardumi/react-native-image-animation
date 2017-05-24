@@ -5,7 +5,7 @@
 'use strict';
 
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, Animated } from 'react-native';
 import TimerMixin from 'react-timer-mixin';
 import PropTypes from 'prop-types';
 
@@ -19,12 +19,16 @@ module.exports = React.createClass({
     getInitialState: function () {
         return {
             imageIndex: 0,
+            fadeAnim: new Animated.Value(1)
         };
     },
     componentDidMount: function () {
         this.animationRepeatCount = this.props.animationRepeatCount || 0;
         this.intervalId = this.setInterval(
             () => {
+                Animated.timing(
+                  this.state.fadeAnim,
+                  { toValue: 0, duration: 500} ).start();
                 let imageIndex = this.state.imageIndex + 1;
                 if (imageIndex >= this.props.animationImages.length) {
                     imageIndex = 0;
@@ -34,12 +38,16 @@ module.exports = React.createClass({
                     }
                     this.animationRepeatCount--;
                 }
-                this.setState({ imageIndex:imageIndex });
+                this.setState({ imageIndex:imageIndex }, function() {
+                  Animated.timing(
+                    this.state.fadeAnim,
+                    { toValue: 1, duration: 500 } ).start();
+                });
             }, this.props.animationDuration || 1000);
     },
     render: function () {
         return (
-            <Image
+            <Animated.Image
                 {...this.props}
                 source={this.props.animationImages[this.state.imageIndex]} />
         );
