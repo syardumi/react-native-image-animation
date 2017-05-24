@@ -39,9 +39,9 @@ module.exports = React.createClass({
                     this.animationRepeatCount--;
                 }
                 this.setState({ imageIndex:imageIndex }, function() {
-                  Animated.timing(
+                  /*Animated.timing(
                     this.state.fadeAnim,
-                    { toValue: 1, duration: 500 } ).start();
+                    { toValue: 1, duration: 500 } ).start();*/
                 });
             }, this.props.animationDuration || 1000);
     },
