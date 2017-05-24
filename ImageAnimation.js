@@ -50,7 +50,7 @@ module.exports = React.createClass({
                         _this.state.fadeAnim,
                         { toValue: 1, duration: _this.props.fadeDuration || 500 } ).start();
                     }
-                  }, (_this.props.fadeDuration || 500) + 100);
+                  }, _this.props.fadeDuration || 500);
                 });
             }, this.props.animationDuration || 1000);
     },
