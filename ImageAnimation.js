@@ -19,7 +19,7 @@ module.exports = React.createClass({
     getInitialState: function () {
         return {
             imageIndex: 0,
-            fadeAnim: new Animated.Value(1)
+            fadeAnim: 1//new Animated.Value(1)
         };
     },
     componentDidMount: function () {
@@ -49,6 +49,7 @@ module.exports = React.createClass({
         return (
             <Animated.Image
                 {...this.props}
+                style={[this.props.style, {opacity: this.state.fadeAnim}]}
                 source={this.props.animationImages[this.state.imageIndex]} />
         );
     },
