@@ -43,15 +43,15 @@ module.exports = React.createClass({
                     }
                     this.animationRepeatCount--;
                 }
-                this.setState({ imageIndex:imageIndex }, function() {
-                  setTimeout(function() {
+                setTimeout(function() {
+                  _this.setState({ imageIndex:imageIndex }, function() {
                     if (_this.props.enableFadeInOut) {
                       Animated.timing(
                         _this.state.fadeAnim,
                         { toValue: 1, duration: _this.props.fadeDuration || 500 } ).start();
                     }
-                  }, _this.props.fadeDuration || 500);
-                });
+                  });
+                }, _this.props.fadeDuration || 500);
             }, this.props.animationDuration || 1000);
     },
     render: function () {
