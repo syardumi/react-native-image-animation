@@ -23,6 +23,7 @@ module.exports = React.createClass({
         };
     },
     componentDidMount: function () {
+        var _this = this;
         this.animationRepeatCount = this.props.animationRepeatCount || 0;
         this.intervalId = this.setInterval(
             () => {
@@ -39,9 +40,9 @@ module.exports = React.createClass({
                     this.animationRepeatCount--;
                 }
                 setTimeout(function() {
-                  this.setState({ imageIndex:imageIndex }, function() {
+                  _this.setState({ imageIndex:imageIndex }, function() {
                     Animated.timing(
-                      this.state.fadeAnim,
+                      _this.state.fadeAnim,
                       { toValue: 1, duration: 500 } ).start();
                   });
                 }, 500);
