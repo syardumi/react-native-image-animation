@@ -4,13 +4,10 @@
 */
 'use strict';
 
-const React = require('react-native');
-const {
-    Image,
-    PropTypes,
-} = React;
-
-const TimerMixin = require('react-timer-mixin');
+import React from 'react';
+import { Image } from 'react-native';
+import TimerMixin from 'react-timer-mixin';
+import PropTypes from 'prop-types';
 
 module.exports = React.createClass({
     propTypes: {
