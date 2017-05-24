@@ -47,7 +47,7 @@ module.exports = React.createClass({
     },
     render: function () {
         return (
-            <Animated.Image
+            <Image
                 {...this.props}
                 style={[this.props.style, {opacity: this.state.fadeAnim}]}
                 source={this.props.animationImages[this.state.imageIndex]} />
