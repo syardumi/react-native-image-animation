@@ -15,7 +15,7 @@ module.exports = React.createClass({
         animationRepeatCount : PropTypes.number,
         animationDuration : PropTypes.number,
         fadeDuration: PropTypes.number,
-        enableFadeInOut: PropTypes.boolean
+        enableFadeInOut: PropTypes.bool
     },
     mixins: [TimerMixin],
     getInitialState: function () {
