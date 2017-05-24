@@ -38,11 +38,13 @@ module.exports = React.createClass({
                     }
                     this.animationRepeatCount--;
                 }
-                this.setState({ imageIndex:imageIndex }, function() {
-                  /*Animated.timing(
-                    this.state.fadeAnim,
-                    { toValue: 1, duration: 500 } ).start();*/
-                });
+                setTimeout(function() {
+                  this.setState({ imageIndex:imageIndex }, function() {
+                    Animated.timing(
+                      this.state.fadeAnim,
+                      { toValue: 1, duration: 500 } ).start();
+                  });
+                }, 500);
             }, this.props.animationDuration || 1000);
     },
     render: function () {
