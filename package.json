@@ -4,7 +4,7 @@
   "description": "A pure js image animation like ios animationImages, support ios and android",
   "main": "ImageAnimation.js",
   "author": {
-    "name": "YunJiang.Fang, Steve Yardumian",
+    "name": "YunJiang.Fang",
     "email": "42550564@qq.com"
   },
   "license": "MIT",
@@ -20,15 +20,16 @@
     "remobile",
     "mobile"
   ],
-  "homepage": "https://github.com/syardumian/react-native-image-animation",
+  "homepage": "https://github.com/remobile/react-native-image-animation",
   "bugs": {
-    "url": "https://github.com/syardumian/react-native-image-animation/issues"
+    "url": "https://github.com/remobile/react-native-image-animation/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/syardumian/react-native-image-animation.git"
+    "url": "git://github.com/remobile/react-native-image-animation.git"
   },
   "dependencies": {
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react-timer-mixin": "^0.13.3"
   }
 }
