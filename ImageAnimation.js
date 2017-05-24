@@ -14,6 +14,8 @@ module.exports = React.createClass({
         animationImages : PropTypes.array.isRequired,
         animationRepeatCount : PropTypes.number,
         animationDuration : PropTypes.number,
+        fadeDuration: PropTypes.number,
+        enableFadeInOut: PropTypes.boolean
     },
     mixins: [TimerMixin],
     getInitialState: function () {
@@ -27,9 +29,11 @@ module.exports = React.createClass({
         this.animationRepeatCount = this.props.animationRepeatCount || 0;
         this.intervalId = this.setInterval(
             () => {
-                Animated.timing(
-                  this.state.fadeAnim,
-                  { toValue: 0, duration: 500} ).start();
+                if (this.props.enableFadeInOut) {
+                  Animated.timing(
+                    this.state.fadeAnim,
+                    { toValue: 0, duration: this.props.fadeDuration || 500} ).start();
+                }
                 let imageIndex = this.state.imageIndex + 1;
                 if (imageIndex >= this.props.animationImages.length) {
                     imageIndex = 0;
@@ -39,13 +43,15 @@ module.exports = React.createClass({
                     }
                     this.animationRepeatCount--;
                 }
-                setTimeout(function() {
-                  _this.setState({ imageIndex:imageIndex }, function() {
-                    Animated.timing(
-                      _this.state.fadeAnim,
-                      { toValue: 1, duration: 500 } ).start();
-                  });
-                }, 500);
+                this.setState({ imageIndex:imageIndex }, function() {
+                  setTimeout(function() {
+                    if (_this.props.enableFadeInOut) {
+                      Animated.timing(
+                        _this.state.fadeAnim,
+                        { toValue: 1, duration: _this.props.fadeDuration || 500 } ).start();
+                    }
+                  }, _this.props.fadeDuration || 500);
+                });
             }, this.props.animationDuration || 1000);
     },
     render: function () {
