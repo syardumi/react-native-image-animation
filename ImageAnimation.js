@@ -55,10 +55,19 @@ module.exports = React.createClass({
             }, this.props.animationDuration || 1000);
     },
     render: function () {
+        if (this.props.enableFadeInOut) {
+          return (
+              <Animated.Image
+                  {...this.props}
+                  style={[this.props.style, {opacity: this.state.fadeAnim}]}
+                  source={this.props.animationImages[this.state.imageIndex]} />
+          );
+        }
+
         return (
-            <Animated.Image
+            <Image
                 {...this.props}
-                style={[this.props.style, {opacity: this.state.fadeAnim}]}
+                style={this.props.style}
                 source={this.props.animationImages[this.state.imageIndex]} />
         );
     },
