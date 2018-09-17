@@ -8,8 +8,9 @@ import React from 'react';
 import { Image, Animated } from 'react-native';
 import TimerMixin from 'react-timer-mixin';
 import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 
-module.exports = React.createClass({
+module.exports = createReactClass({
     propTypes: {
         animationImages : PropTypes.array.isRequired,
         animationRepeatCount : PropTypes.number,
